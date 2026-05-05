@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 HouseTask
 
-## Getting Started
+O **HouseTask** é uma aplicação web para registro e organização de atividades, permitindo cadastrar nome, data e tipo de atividade, além de filtrar os registros por atividade.
 
-First, run the development server:
+O projeto foi desenvolvido com **Next.js** e **Supabase**, com foco em prática de CRUD e manipulação de dados em aplicações fullstack.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Funcionalidades atuais
+
+* 👤 Cadastro de registros com:
+
+  * Nome
+  * Data
+  * Atividade
+
+* 📋 Listagem dos registros cadastrados
+
+* 🔎 Filtro de registros por atividade (exibindo nome e data)
+
+* ☁️ Persistência de dados com Supabase
+
+---
+
+## 🧰 Tech Stack
+
+* Next.js
+* React
+* Supabase (PostgreSQL)
+* CSS / Tailwind *(caso esteja usando)*
+* Vercel *(para deploy)*
+
+---
+
+## 🚀 Como rodar o projeto
+
+### 1. Clone o repositório
+
+```bash id="g2k9aa"
+git clone https://github.com/ssadoraa/housetask.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Acesse o diretório
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash id="m7p1dd"
+cd housetask
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Instale as dependências
 
-## Learn More
+```bash id="x8v2qq"
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Configure as variáveis de ambiente
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Crie um arquivo `.env.local`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env id="e4k8pp"
+NEXT_PUBLIC_SUPABASE_URL=sua_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_chave
+```
 
-## Deploy on Vercel
+### 5. Execute o projeto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash id="t6n3zz"
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A aplicação estará disponível em:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 🧠 Como funciona
+
+1. O usuário cadastra um registro com nome, data e atividade
+2. Os dados são armazenados no Supabase
+3. A aplicação lista os registros salvos
+4. O usuário pode filtrar por tipo de atividade
+5. A lista exibe apenas nome e data conforme o filtro
+
+---
+
+## 🧭 Próximas funcionalidades (em desenvolvimento)
+
+A próxima evolução do projeto será a implementação de um sistema de **salas (rooms)**:
+
+* 🏠 Criação de salas por um usuário (owner)
+* 📩 Convite de outros usuários para a sala
+* 👥 Sistema de membros por sala
+* 📝 Registro de atividades dentro de cada sala
+* 🔐 Autenticação de usuários
+* 🔒 Controle de acesso por sala
+
+> ⚠️ Essas funcionalidades ainda **não foram implementadas**, mas fazem parte da evolução planejada do projeto.
