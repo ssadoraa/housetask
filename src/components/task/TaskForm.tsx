@@ -56,8 +56,9 @@ export default function TaskForm() {
                     <div className="space-y-2">
                         <Label htmlFor="createdAt" className="text-sm font-medium text-slate-700">Data de Criação</Label>
                         <div className="relative">
-                            <Input id="createdAt" value={currentDateTime} readOnly
-                                   className="bg-slate-50 border-slate-200 text-slate-500 cursor-not-allowed pl-10" />
+                            <div className="bg-slate-50 border border-slate-200 text-slate-500 pl-10 h-10 flex items-center rounded-md">
+                                {currentDateTime}
+                            </div>
                             <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                         </div>
                     </div>
