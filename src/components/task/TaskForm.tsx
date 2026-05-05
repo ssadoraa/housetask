@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Plus, Calendar } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { tarefas } from "@/types/tarefas"
+import toast from "react-hot-toast"
 
 export default function TaskForm() {
     const [open, setOpen] = useState(false);
@@ -24,8 +25,15 @@ export default function TaskForm() {
         : "";
 
     async function handleSubmit(formData: FormData) {
-        await createTask(formData)
-        setOpen(false)
+        const toastId = toast.loading('Criando tarefa...')
+
+        try {
+            await createTask(formData)
+            toast.success('Tarefa criada com sucesso!', { id: toastId })
+            setOpen(false)
+        } catch (error) {
+            toast.error('Erro ao criar tarefa', { id: toastId })
+        }
     }
 
     return (
