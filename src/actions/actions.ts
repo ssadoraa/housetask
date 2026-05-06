@@ -9,12 +9,21 @@ export async function createTask(formData: FormData) {
 
 	const title = formData.get('title')
 	const user = formData.get('user')
+	const currentDateTime = open 
+		? new Date().toLocaleString('pt-BR', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric',
+			hour: '2-digit',
+			minute: '2-digit'
+		}) 
+		: "";
 
 	if (typeof title !== 'string' || typeof user !== 'string') {
 		throw new Error('Campos inválidos')
 	}
 
-	const task: Task = {title, user, created_at: new Date().toISOString(),}
+	const task: Task = {title, user, created_at: currentDateTime }
 
 	const { error } = await supabase
 		.from('tasks')
