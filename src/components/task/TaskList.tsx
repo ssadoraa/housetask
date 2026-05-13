@@ -12,15 +12,18 @@ export default function TaskList({ tasks }: { tasks: Task[] }) {
     const [open, setOpen] = useState(false)
     const [filter, setFilter] = useState<string>("")
 
-    const formatDate = (dateString?: string) => {
-        if (!dateString) return ""
+    const formatDate = (date: string | Date) => {
+        const d = new Date(date);
 
-        const date = new Date(dateString)
-        const d = date.toLocaleDateString('pt-BR')
-        const h = date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-
-        return `${d} às ${h}`
-    }
+        return d.toLocaleString("pt-BR", {
+            timeZone: "America/Sao_Paulo",
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+        }).replace(",", " às");
+    };
 
     const groupedEntries = useMemo(() => {
         const base = filter
@@ -48,7 +51,7 @@ export default function TaskList({ tasks }: { tasks: Task[] }) {
 
     const handleOpenChange = (value: boolean) => {
         setOpen(value)
-        if (!value) setFilter("")
+        setFilter("")
     }
 
     return (
@@ -60,7 +63,8 @@ export default function TaskList({ tasks }: { tasks: Task[] }) {
                 </Button>
             </DialogTrigger>
 
-            <DialogContent className="sm:max-w-md border-none bg-white p-0 overflow-hidden shadow-2xl rounded-lg">
+            <DialogContent className="sm:max-w-md border-none bg-white p-0 overflow-hidden shadow-2xl rounded-lg"
+                           onInteractOutside={(e) => e.preventDefault()}>
                 <DialogHeader className="p-6 pb-0">
                     <DialogTitle className="text-xl font-semibold text-slate-900">Tarefas Registradas</DialogTitle>
                     <DialogDescription className="text-slate-500">Selecione um filtro para visualizar as tarefas.</DialogDescription>
